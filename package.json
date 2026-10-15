@@ -1,0 +1,12 @@
+{
+  "name": "orbit-advanced-crud",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A live customer CRUD dashboard with a Node.js API and server-sent events.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8fc" />
+  <title>Orbit — Customer workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="Orbit home"><span class="brand-mark">o</span><span>orbit<span class="brand-dot">.</span></span></a>
+    <div class="workspace"><div class="workspace-icon">N</div><div><strong>Northstar Studio</strong><small>Free workspace</small></div><span class="chevron">⌄</span></div>
+    <p class="nav-label">WORKSPACE</p>
+    <nav class="nav-list" aria-label="Main navigation">
+      <a href="#overview" class="nav-item"><span class="nav-icon">◫</span> Overview</a>
+      <a href="#customers" class="nav-item active"><span class="nav-icon">♧</span> Customers <span class="nav-count" id="nav-count">0</span></a>
+    </nav>
+    <p class="nav-label tools-label">TOOLS</p>
+    <nav class="nav-list"><a href="#imports" class="nav-item" id="import-nav"><span class="nav-icon">⇧</span> Import data</a></nav>
+    <div class="sidebar-bottom"><div class="help-card"><div class="help-icon">✦</div><strong>Need a hand?</strong><p>Explore our quick guide to get started.</p><button id="guide-btn">Open guide <span>↗</span></button></div><div class="profile"><div class="avatar avatar-purple">M</div><div><strong>Moulik</strong><small>Admin</small></div><span class="more">···</span></div></div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar"><div class="breadcrumbs">Workspace <span>/</span> <strong>Customers</strong></div><div class="top-actions"><span class="live-status"><i id="live-dot"></i><span id="live-indicator">Connecting</span></span><button class="icon-button" aria-label="Search" id="focus-search">⌕</button><button class="icon-button notification" aria-label="Notifications">♧<i></i></button><div class="avatar avatar-purple top-avatar">M</div></div></header>
+    <section class="page-head" id="overview"><div><div class="eyebrow"><span class="eyebrow-dot"></span> CUSTOMER MANAGEMENT</div><h1>Customers</h1><p class="subtitle">Manage your relationships and keep everything moving.</p></div><div class="head-actions"><button class="button button-secondary" id="export-btn"><span>⇩</span> Export</button><button class="button button-primary" id="add-btn"><span>＋</span> Add customer</button></div></section>
+
+    <section class="stats-grid" aria-label="Customer statistics">
+      <article class="stat-card"><div class="stat-top"><span>Total customers</span><span class="stat-icon blue">♧</span></div><div class="stat-value" id="stat-total">0</div><div class="stat-foot"><span class="trend up">Server stored</span><span>live records</span></div><div class="sparkline spark-blue"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="stat-card"><div class="stat-top"><span>Active customers</span><span class="stat-icon green">✦</span></div><div class="stat-value" id="stat-active">0</div><div class="stat-foot"><span class="trend up" id="stat-active-share">0%</span><span>of all customers</span></div><div class="sparkline spark-green"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="stat-card"><div class="stat-top"><span>At risk</span><span class="stat-icon orange">⌁</span></div><div class="stat-value" id="stat-risk">0</div><div class="stat-foot"><span class="trend down">Needs attention</span><span>current status</span></div><div class="sparkline spark-orange"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="stat-card"><div class="stat-top"><span>New this month</span><span class="stat-icon violet">＋</span></div><div class="stat-value" id="stat-new">0</div><div class="stat-foot"><span class="trend up">Created</span><span>this calendar month</span></div><div class="sparkline spark-violet"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+    </section>
+
+    <section class="table-card" id="customers">
+      <div class="table-heading"><div><h2>All customers <span class="count-pill" id="table-count">0</span></h2><p>A clear view of everyone in your orbit.</p></div><button class="more-button" aria-label="More options">···</button></div>
+      <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="search-input" type="search" placeholder="Search customers..." aria-label="Search customers" /><kbd>⌘ K</kbd></div><div class="toolbar-actions"><select id="status-filter" aria-label="Filter by status"><option value="all">◉ &nbsp; All status</option><option>Active</option><option>At risk</option><option>Inactive</option></select><select id="plan-filter" aria-label="Filter by plan"><option value="all">▤ &nbsp; All plans</option><option>Enterprise</option><option>Professional</option><option>Starter</option></select><button class="button button-secondary filter-button" id="clear-filters">↺ <span>Reset</span></button></div></div>
+      <div class="bulk-bar hidden" id="bulk-bar"><span><strong id="selected-count">0</strong> selected</span><div><select id="bulk-status"><option value="">Change status</option><option>Active</option><option>At risk</option><option>Inactive</option></select><button class="text-button danger-text" id="bulk-delete">Delete selected</button><button class="text-button" id="clear-selection">Clear</button></div></div>
+      <div class="table-scroll"><table><thead><tr><th class="check-col"><input id="select-all" type="checkbox" aria-label="Select all customers" /></th><th><button class="sort-button" data-sort="name">CUSTOMER <span>↕</span></button></th><th>STATUS</th><th><button class="sort-button" data-sort="company">COMPANY <span>↕</span></button></th><th>PLAN</th><th><button class="sort-button" data-sort="joined">JOINED <span>↕</span></button></th><th class="action-head">ACTIONS</th></tr></thead><tbody id="customer-rows"></tbody></table></div>
+      <div class="empty-state hidden" id="empty-state"><div class="empty-icon">⌕</div><h3>No customers found</h3><p>Try adjusting your search or filters.</p><button class="button button-secondary" id="empty-reset">Clear filters</button></div>
+      <footer class="table-footer"><span id="page-summary">Showing 0 customers</span><div class="pagination"><button id="prev-page" aria-label="Previous page">‹</button><span id="page-number">1</span><button id="next-page" aria-label="Next page">›</button><select id="page-size" aria-label="Rows per page"><option value="8">8 per page</option><option value="12">12 per page</option><option value="20">20 per page</option></select></div></footer>
+    </section>
+    <footer class="app-footer"><span>© 2026 Orbit workspace</span><span class="status-online"><i></i> All systems operational</span></footer>
+  </main>
+
+  <div class="modal-backdrop hidden" id="customer-modal" role="presentation"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-heading"><div><div class="modal-kicker">CUSTOMER PROFILE</div><h2 id="modal-title">Add a customer</h2><p>Fill in the details below to add someone new.</p></div><button class="close-modal" id="close-modal" aria-label="Close">×</button></div><form id="customer-form"><input type="hidden" id="customer-id" /><div class="form-grid"><label>Full name <span>*</span><input id="form-name" required maxlength="80" placeholder="e.g. Taylor Morgan" /></label><label>Email address <span>*</span><input id="form-email" required type="email" maxlength="120" placeholder="taylor@company.com" /></label><label>Company <span>*</span><input id="form-company" required maxlength="100" placeholder="Company name" /></label><label>Job title<input id="form-role" maxlength="80" placeholder="e.g. Product designer" /></label><label>Plan<select id="form-plan"><option>Starter</option><option>Professional</option><option>Enterprise</option></select></label><label>Status<select id="form-status"><option>Active</option><option>At risk</option><option>Inactive</option></select></label></div><div class="modal-footer"><button type="button" class="button button-secondary" id="cancel-modal">Cancel</button><button type="submit" class="button button-primary" id="save-customer">Save customer</button></div></form></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="import-file" accept=".json,.csv,application/json,text/csv" hidden />
+  <script src="app.js"></script>
+</body>
+</html>
